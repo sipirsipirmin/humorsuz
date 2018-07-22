@@ -1,9 +1,28 @@
-from random import randint
+from random import choice
 from news.models import NewsItem
 
-cities = ["Ankara","Karabuk","Zonguldak","Hakkari","Muş","Los Encılıs"]
-thinks = ["Fikibok","Fuze","Labrador","Teriyer","Tihulu","Metallica","Gnu",
-          "Windows"
+"""
+    Random news generator for Django shell
+    Usage:
+        from rand_new import *
+        insert_new_new_to_database()
+
+"""
+cities = ["Ankara",
+          "Karabuk",
+          "Zonguldak",
+          "Hakkari",
+          "Muş",
+          "Los Encılıs",
+          ]
+thinks = ["Fikibok",
+        "Fuze",
+        "Labrador",
+        "Teriyer",
+        "Tihulu",
+        "Metallica",
+        "Gnu",
+        "Windows",
         ]
 titles = [
           "{}\'de {} istalası",
@@ -13,10 +32,16 @@ titles = [
 
     ]
 def get_random_new():
-    if randint(0,1) % 2 == 0:
-        return titles[randint(0,len(titles)-1)].format(thinks[randint(0,len(thinks)-1)], cities[randint(0,len(cities)-1)])
+    if randint(0,1):
+        return choice(title).format(
+                                choice(thinks),
+                                choice(cities)
+                                )
     else:
-        return titles[randint(0,len(titles)-1)].format(cities[randint(0,len(cities)-1)],thinks[randint(0,len(thinks)-1)])
+        return choice(title).format(
+                                choice(cities),
+                                choice(thinks)
+                                )
 def insert_new_new_to_database():
     new_new = get_random_new()
     haber = NewsItem()
