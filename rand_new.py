@@ -1,4 +1,5 @@
 from random import choice
+from random import randint
 from news.models import NewsItem
 
 """
@@ -33,12 +34,12 @@ titles = [
     ]
 def get_random_new():
     if randint(0,1):
-        return choice(title).format(
+        return choice(titles).format(
                                 choice(thinks),
                                 choice(cities)
                                 )
     else:
-        return choice(title).format(
+        return choice(titles).format(
                                 choice(cities),
                                 choice(thinks)
                                 )
